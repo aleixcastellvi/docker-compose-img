@@ -41,3 +41,49 @@ Initiate a consumer on the **topic-test** topic with the following command:
 ```
 kafka-console-consumer.sh --topic topic-test --bootstrap-server kafka-broker-1:9092 --from-beginning
 ```
+
+# Sending Events to Kafka Topic (Test Script)
+
+The Python script [`user_interaction_producer.py`](user_interaction_producer.py) continuously sends simulated user interaction events in JSON format to a specific topic in Apache Kafka.
+
+## Running the script
+
+### Setting up a Virtual Environment
+
+* **Conda (Mac OSX)**
+
+```
+conda create -n send-event-kafka python=3.10
+```
+```
+conda activate send-event-kafka
+```
+
+* **Virtualenv (Linux and Windows)**
+
+```
+virtualenv send-event-kafka python=3.10
+# Linux
+source send-event-kafka/bin/activate
+# Windows
+send-event-kafka\Scripts\activate
+```
+
+```
+# Windows alternative
+py -m venv send-event-kafka
+send-event-kafka\Scripts\activate
+```
+
+Install dependencies with pip
+
+```
+pip install confluent_kafka
+pip install kafka-python
+```
+
+Run the app
+
+```
+python user_interaction_producer.py
+```
