@@ -1,4 +1,4 @@
-# Setting Up and Using Kafka and Zookeeper with Docker
+# Setting Up Kafka and Zookeeper with Docker
 
 ## Start Docker Compose
 
@@ -20,70 +20,38 @@ docker exec -it kafka-broker-1 bash
 
 ## Create a Topic
 
-Run the following command to create a new topic named **topic-test** with 3 partitions and a replication factor of 1:
+Run the following command to create a new topic named **topic-name** with 3 partitions and a replication factor of 1:
 
 ```
-kafka-topics.sh --create --topic topic-test --bootstrap-server kafka-broker-1:9092 --partitions 3 --replication-factor 1
+kafka-topics.sh --create --topic <topic-name> --bootstrap-server kafka-broker-1:9092 --partitions 3 --replication-factor 1
+```
+
+List available topics with:
+
+```
+kafka-topics.sh --list --bootstrap-server kafka-broker-1:9092
+```
+
+## Delete a Topic
+
+To delete a topic:
+
+```
+kafka-topics.sh --delete --topic <topic-name> --bootstrap-server kafka-broker-1:9092
 ```
 
 ## Create a Producer
 
-To start a producer on the **topic-test** topic, use the following command:
+To start a producer on the **topic-name** topic, use the following command:
 
 ```
-kafka-console-producer.sh --topic topic-test --bootstrap-server kafka-broker-1:9092
+kafka-console-producer.sh --topic <topic-name> --bootstrap-server kafka-broker-1:9092
 ```
 
 ## Create a Consumer
 
-Initiate a consumer on the **topic-test** topic with the following command:
+Initiate a consumer on the **topic-name** topic with the following command:
 
 ```
-kafka-console-consumer.sh --topic topic-test --bootstrap-server kafka-broker-1:9092 --from-beginning
-```
-
-# Sending Events to Kafka Topic (Test Script)
-
-The Python script [`user_interaction_producer.py`](user_interaction_producer.py) continuously sends simulated user interaction events in JSON format to a specific topic in Apache Kafka.
-
-## Running the script
-
-### Setting up a Virtual Environment
-
-* **Conda (Mac OSX)**
-
-```
-conda create -n send-event-kafka python=3.10
-```
-```
-conda activate send-event-kafka
-```
-
-* **Virtualenv (Linux and Windows)**
-
-```
-virtualenv send-event-kafka python=3.10
-# Linux
-source send-event-kafka/bin/activate
-# Windows
-send-event-kafka\Scripts\activate
-```
-
-```
-# Windows alternative
-py -m venv send-event-kafka
-send-event-kafka\Scripts\activate
-```
-
-Install dependencies with pip
-
-```
-pip install confluent_kafka
-pip install kafka-python
-```
-
-Run the app
-
-```
-python user_interaction_producer.py
-```
+kafka-console-consumer.sh --topic <topic-name> --bootstrap-server kafka-broker-1:9092 --from-beginning
+``` 
