@@ -12,10 +12,23 @@ docker-compose up
 
 *Launch in the terminal for the producer and for the consumer*
 
-To execute Kafka commands from the terminal within the container, use the following command, where **kafka-broker-1** is the Docker container ID:
+To execute Kafka commands from the terminal within the container, use the following command, where **kafka-broker-1** is the Docker container name:
 
 ```
 docker exec -it kafka-broker-1 bash
+```
+**Impotant!** *Make sure that the container with the name **kafka-broker-1** exists and is running.*
+
+You can list the names of the running containers with the following command:
+
+```
+docker ps
+```
+
+You can also use the following command to view all containers (including stopped ones):
+
+```
+docker ps -a
 ```
 
 ## Create a Topic
