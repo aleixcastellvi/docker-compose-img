@@ -39,6 +39,10 @@ To create a server connected to the PostgreSQL database instance running in the 
     * **Username:** root
     * **Password:** root
 
+## Creating a Relational SQL Table
+
+The [queries file](./queries.sql) contains the commands necessary to create an example dataset with banking transaction data.
+
 ## Stopping the Containers
 
 ```bash
