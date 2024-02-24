@@ -20,7 +20,7 @@ docker-compose up
 
 This command will download the necessary Docker images, create and start the containers defined in the docker-compose.yaml file.
 
-## Accessing pgAdmin Interface
+## Accessing pgAdmin Interface
 
 Open the browser and go to http://localhost:80. Log in with the following credentials:
 
