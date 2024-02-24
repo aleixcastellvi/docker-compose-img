@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+
+  # PostgreSQL database
+  db:
+    image: postgres
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    shm_size: 128mb
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: root
+
+  # Interface to administer the PostgreSQL database
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
