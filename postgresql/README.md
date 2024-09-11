@@ -10,12 +10,12 @@ git clone https://github.com/aleixcastellvi/docker-compose-img.git
 cd postgresql
 ```
 
-## Start Docker Compose
+## Start the Docker Containers
 
-To launch postgresSQL and pgAdmin interfice, run the following command in the terminal:
+Run the following command to start both the postgresSQL and pgAdmin interfice containers:
 
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 This command will download the necessary Docker images, create and start the containers defined in the docker-compose.yaml file.

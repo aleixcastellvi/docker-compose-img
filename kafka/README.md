@@ -31,6 +31,7 @@ cd /path/to/kafka
 ```
 
 **Step 2**. Start the Docker Containers
+
 Run the following command to start both the Kafka and Zookeeper containers:
 
 ```bash
