@@ -1,70 +1,54 @@
 # Setting Up Kafka and Zookeeper with Docker
 
-## Start Docker Compose
+## Introduction
 
-To launch Kafka and Zookeeper, run the following command in the terminal:
+This guide will walk you through setting up Apache Kafka and Zookeeper using Docker. Kafka is a distributed streaming platform, and Zookeeper helps manage and coordinate Kafka brokers.
+
+With the provided Docker Compose setup, you can easily start Kafka and Zookeeper containers, enabling Kafka for producing and consuming messages.
+
+## Prerequisites
+
+Make sure the following tools are installed on your system:
+
+- Docker 
+- Docker Compose
+
+## Docker Compose Configuration
+
+The [docker-compose.yml](/kafka/docker-compose.yml) file defines the setup for Kafka and Zookeeper. It includes the Zookeeper container and a single Kafka broker. Here's a breakdown of the services:
+
+- Zookeeper: Necessary for Kafka to function, manages Kafka brokers.
+- Kafka Broker: Handles message production, storage, and consumption.
+
+## Steps to Start Kafka and Zookeeper
+
+**Step 1**. Navigate to the kafka directory
+
+First, open a terminal and navigate to the directory where your docker-compose.yml file is located:
 
 ```bash
-docker-compose up
+cd /path/to/kafka
 ```
 
-## Access the Kafka Container
-
-*Launch in the terminal for the producer and for the consumer*
-
-To execute Kafka commands from the terminal within the container, use the following command, where **kafka-broker-1** is the Docker container name:
+**Step 2**. Start the Docker Containers
+Run the following command to start both the Kafka and Zookeeper containers:
 
 ```bash
-docker exec -it kafka-broker-1 bash
+docker-compose up -d
 ```
-**Impotant!** *Make sure that the container with the name **kafka-broker-1** exists and is running.*
 
-You can list the names of the running containers with the following command:
+This command will start the containers in detached mode, allowing them to run in the background.
 
-```bash
+**Step 3**. Verify Running Containers
+
+To verify that the containers are running, use:
+
+```Bash
 docker ps
 ```
 
-You can also use the following command to view all containers (including stopped ones):
+Stopping the Kafka and Zookeeper Containers with this command:
 
-```bash
-docker ps -a
+```Bash
+docker-compose down
 ```
-
-## Create a Topic
-
-Run the following command to create a new topic named **topic-name** with 3 partitions and a replication factor of 1:
-
-```bash
-kafka-topics.sh --create --topic <topic-name> --bootstrap-server kafka-broker-1:9092 --partitions 3 --replication-factor 1
-```
-
-List available topics with:
-
-```bash
-kafka-topics.sh --list --bootstrap-server kafka-broker-1:9092
-```
-
-## Delete a Topic
-
-To delete a topic:
-
-```bash
-kafka-topics.sh --delete --topic <topic-name> --bootstrap-server kafka-broker-1:9092
-```
-
-## Create a Producer
-
-To start a producer on the **topic-name** topic, use the following command:
-
-```bash
-kafka-console-producer.sh --topic <topic-name> --bootstrap-server kafka-broker-1:9092
-```
-
-## Create a Consumer
-
-Initiate a consumer on the **topic-name** topic with the following command:
-
-```bash
-kafka-console-consumer.sh --topic <topic-name> --bootstrap-server kafka-broker-1:9092 --from-beginning
-``` 

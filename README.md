@@ -4,7 +4,7 @@ This repository contains Docker Compose configurations for various services. Eac
 
 ## Available Services
 
-1. [Kafka](./kafka/README.md): Instructions and configuration files to set up a Kafka container with Zookeeper.
+1. [Kafka](./kafka/README.md): File to set up a Kafka container with Zookeeper.
 
 2. [PostgreSQL](./postgresql/README.md): Instructions and configuration files for setting up a PostgreSQL database container and a pgAdmin container for database management.
 
